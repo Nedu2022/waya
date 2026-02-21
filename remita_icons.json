@@ -1,0 +1,35 @@
+{
+  "images": [
+    "https://remita.net/assets/minimal/images/remita_orange_new_logo.svg",
+    "https://remita.net/assets/minimal/images/security_icon.svg",
+    "https://remita.net/assets/minimal/images/sign_up_icon.svg",
+    "https://remita.net/assets/minimal/images/close_icon.svg",
+    "https://remita.net/assets/minimal/images/quick-links-svg/icons/buy_airtime.svg",
+    "https://remita.net/assets/minimal/images/quick-links-svg/icons/buy_data.svg",
+    "https://remita.net/assets/minimal/images/quick-links-svg/icons/buy_electricity.svg",
+    "https://remita.net/assets/minimal/images/quick-links-svg/icons/pay_cable.svg",
+    "https://remita.net/assets/minimal/images/quick-links-svg/icons/pay_water.svg",
+    "https://remita.net/assets/minimal/images/quick-links-svg/icons/pay_tsa.svg",
+    "https://remita.net/assets/minimal/images/quick-links-svg/icons/pay_bills.svg",
+    "https://remita.net/assets/minimal/images/quick-links-svg/icons/pay_taxes.svg",
+    "https://remita.net/assets/minimal/images/quick-links-svg/icons/statutory_payments.svg",
+    "https://remita.net/assets/minimal/images/quick-links-svg/icons/resend_receipt.svg",
+    "https://remita.net/assets/minimal/images/quick-links-svg/icons/standing_order.svg",
+    "https://remita.net/assets/minimal/images/modal-svg/buy-jamb-icon.svg",
+    "https://remita.net/assets/minimal/images/mobile_inline.svg",
+    "https://remita.net/assets/minimal/images/mail_icon.svg",
+    "https://remita.net/assets/minimal/images/footerinstagram.svg",
+    "https://remita.net/assets/minimal/images/footerx.svg",
+    "https://remita.net/assets/minimal/images/footerfacebook.svg",
+    "https://remita.net/assets/minimal/images/footerlinkedin.svg",
+    "https://remita.net/assets/minimal/images/googlestore.svg",
+    "https://remita.net/assets/minimal/images/applestore.svg",
+    "https://res.cloudinary.com/remita/image/upload/v1720630155/RemitaAI%20Icons/ai_bxanae.svg",
+    "https://remita.net/assets/minimal/images/close_icon_white.svg",
+    "https://remita.net/assets/minimal/images/googlestore-white.svg",
+    "https://remita.net/assets/minimal/images/applestore-white.svg"
+  ],
+  "svgs": [
+    "<svg _ngcontent-serverApp-c94=\"\" width=\"23\" height=\"21\" viewBox=\"0 0 23 21\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path _ngcontent-serverApp-c94=\"\" d=\"M16.9335 0L18.2437 2.406L20.7005 3.68919L18.2437 4.97238L16.9335 7.37838L15.6232 4.97238L13.1664 3.68919L15.6232 2.406L16.9335 0ZM7.99189 3.04054L10.6412 7.9054L15.6088 10.5L10.6412 13.0946L7.99189 17.9595L5.34253 13.0946L0.375 10.5L5.34253 7.9054L7.99189 3.04054ZM19.5828 14.7163L17.927 11.6757L16.2711 14.7163L13.1664 16.3378L16.2711 17.9595L17.927 21L19.5828 17.9595L22.6875 16.3378L19.5828 14.7163Z\" fill=\"url(#paint0_linear_13510_163793)\"></path><defs _ngcontent-serverApp-c94=\"\"><linearGradient _ngcontent-serverApp-c94=\"\" id=\"paint0_linear_13510_163793\" x1=\"0.375\" y1=\"1.94026\" x2=\"23.1745\" y2=\"20.3984\" gradientUnits=\"userSpaceOnUse\"><stop _ngcontent-serverApp-c94=\"\" offset=\"0.15\" stop-color=\"#FFBF00\"></stop><stop _ngcontent-serverApp-c94=\"\" offset=\"0.48\" stop-color=\"#F16521\"></stop><stop _ngcontent-serverApp-c94=\"\" offset=\"0.93\" stop-color=\"#B3261E\"></stop></linearGradient></defs></svg>"
+  ]
+}
