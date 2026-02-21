@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
 export default function LoanCalculator() {
-  const [ref, inView] = useInView({ threshold: 0.15, triggerOnce: false });
+  const [ref, inView] = useInView({ threshold: 0.15, triggerOnce: true });
   const [amount, setAmount] = useState(500000);
   const [duration, setDuration] = useState(6);
   const interestRate = 0.04;
@@ -38,12 +38,8 @@ export default function LoanCalculator() {
       <div className="max-w-7xl mx-auto px-5 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
           <motion.div
-            initial={{ opacity: 0, x: -30, filter: "blur(12px)" }}
-            animate={
-              inView
-                ? { opacity: 1, x: 0, filter: "blur(0px)" }
-                : { opacity: 0, x: -30, filter: "blur(12px)" }
-            }
+            initial={{ opacity: 0, x: -30 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
             <span className="inline-block text-xs font-bold uppercase tracking-[0.12em] text-accent-purple mb-4">
@@ -101,12 +97,8 @@ export default function LoanCalculator() {
 
           <motion.div
             className="relative"
-            initial={{ opacity: 0, scale: 0.95, filter: "blur(12px)" }}
-            animate={
-              inView
-                ? { opacity: 1, scale: 1, filter: "blur(0px)" }
-                : { opacity: 0, scale: 0.95, filter: "blur(12px)" }
-            }
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={inView ? { opacity: 1, scale: 1 } : {}}
             transition={{ delay: 0.2, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-gradient-radial from-primary/10 to-transparent blur-2xl pointer-events-none" />

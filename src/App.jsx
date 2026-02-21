@@ -1,18 +1,19 @@
-import { useEffect } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import Lenis from "lenis";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-import Services from "./components/Services";
-import Features from "./components/Features";
-import LoanCalculator from "./components/LoanCalculator";
-import HowItWorks from "./components/HowItWorks";
-import AppShowcase from "./components/AppShowcase";
-import Ecosystem from "./components/Ecosystem";
-import Trust from "./components/Trust";
-import Stats from "./components/Stats";
-import Newsletter from "./components/Newsletter";
-import Footer from "./components/Footer";
-import ChatBot from "./components/ChatBot";
+
+const Services = lazy(() => import("./components/Services"));
+const Features = lazy(() => import("./components/Features"));
+const LoanCalculator = lazy(() => import("./components/LoanCalculator"));
+const HowItWorks = lazy(() => import("./components/HowItWorks"));
+const AppShowcase = lazy(() => import("./components/AppShowcase"));
+const Ecosystem = lazy(() => import("./components/Ecosystem"));
+const Trust = lazy(() => import("./components/Trust"));
+const Stats = lazy(() => import("./components/Stats"));
+const Newsletter = lazy(() => import("./components/Newsletter"));
+const Footer = lazy(() => import("./components/Footer"));
+const ChatBot = lazy(() => import("./components/ChatBot"));
 
 export default function App() {
   useEffect(() => {
@@ -42,18 +43,22 @@ export default function App() {
       <Navbar />
       <main>
         <Hero />
-        <Services />
-        <Features />
-        <LoanCalculator />
-        <HowItWorks />
-        <AppShowcase />
-        <Ecosystem />
-        <Trust />
-        <Stats />
-        <Newsletter />
+        <Suspense fallback={null}>
+          <Services />
+          <Features />
+          <LoanCalculator />
+          <HowItWorks />
+          <AppShowcase />
+          <Ecosystem />
+          <Trust />
+          <Stats />
+          <Newsletter />
+        </Suspense>
       </main>
-      <Footer />
-      <ChatBot />
+      <Suspense fallback={null}>
+        <Footer />
+        <ChatBot />
+      </Suspense>
     </>
   );
 }

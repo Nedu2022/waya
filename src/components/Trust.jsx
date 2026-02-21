@@ -39,7 +39,7 @@ const items = [
 ];
 
 export default function Trust() {
-  const [ref, inView] = useInView({ threshold: 0.15, triggerOnce: false });
+  const [ref, inView] = useInView({ threshold: 0.15, triggerOnce: true });
 
   return (
     <section
@@ -54,12 +54,8 @@ export default function Trust() {
       <div className="max-w-7xl mx-auto px-5 lg:px-8 relative z-10">
         <motion.div
           className="text-center max-w-2xl mx-auto mb-16"
-          initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
-          animate={
-            inView
-              ? { opacity: 1, y: 0, filter: "blur(0px)" }
-              : { opacity: 0, y: 24, filter: "blur(8px)" }
-          }
+          initial={{ opacity: 0, y: 24 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
           <span className="inline-block text-xs font-bold uppercase tracking-[0.12em] text-primary mb-4">
@@ -80,12 +76,8 @@ export default function Trust() {
               key={item.title}
               className="card-hover bg-white text-center rounded-2xl p-8 border border-slate-100
                          shadow-[0_0_0_1px_rgba(0,0,0,0.02),0_1px_3px_rgba(0,0,0,0.03)]"
-              initial={{ opacity: 0, y: 28, filter: "blur(8px)" }}
-              animate={
-                inView
-                  ? { opacity: 1, y: 0, filter: "blur(0px)" }
-                  : { opacity: 0, y: 28, filter: "blur(8px)" }
-              }
+              initial={{ opacity: 0, y: 28 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{
                 delay: 0.1 + i * 0.08,
                 duration: 0.5,

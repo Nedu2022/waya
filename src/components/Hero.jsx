@@ -13,17 +13,16 @@ import {
 import PremiumBackground from "./PremiumBackground";
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 32, filter: "blur(8px)" },
+  hidden: { opacity: 0, y: 32 },
   visible: (i = 0) => ({
     opacity: 1,
     y: 0,
-    filter: "blur(0px)",
     transition: { delay: i * 0.12, duration: 0.8, ease: [0.16, 1, 0.3, 1] },
   }),
 };
 
 export default function Hero() {
-  const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: false });
+  const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: true });
   const sectionRef = useRef(null);
 
   const { scrollYProgress } = useScroll({
@@ -138,8 +137,8 @@ export default function Hero() {
           <motion.div
             className="relative flex justify-center lg:justify-end"
             style={{ y: phoneY, scale: phoneScale }}
-            initial={{ opacity: 0, y: 50, filter: "blur(12px)" }}
-            animate={inView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
+            initial={{ opacity: 0, y: 50 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
           >
             <div
@@ -266,10 +265,8 @@ export default function Hero() {
 
               <motion.div
                 className="absolute -left-12 bottom-28 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl px-4 py-3 flex items-center gap-3 shadow-lg hidden lg:flex"
-                initial={{ opacity: 0, x: -30, filter: "blur(8px)" }}
-                animate={
-                  inView ? { opacity: 1, x: 0, filter: "blur(0px)" } : {}
-                }
+                initial={{ opacity: 0, x: -30 }}
+                animate={inView ? { opacity: 1, x: 0 } : {}}
                 transition={{
                   delay: 1,
                   duration: 0.6,
@@ -287,10 +284,8 @@ export default function Hero() {
 
               <motion.div
                 className="absolute -right-8 top-20 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl px-4 py-3 flex items-center gap-3 shadow-lg hidden lg:flex"
-                initial={{ opacity: 0, x: 30, filter: "blur(8px)" }}
-                animate={
-                  inView ? { opacity: 1, x: 0, filter: "blur(0px)" } : {}
-                }
+                initial={{ opacity: 0, x: 30 }}
+                animate={inView ? { opacity: 1, x: 0 } : {}}
                 transition={{
                   delay: 1.2,
                   duration: 0.6,

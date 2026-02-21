@@ -61,8 +61,8 @@ export default function Services() {
       <div className="max-w-7xl mx-auto px-5 lg:px-8 relative z-10">
         <motion.div
           className="text-center max-w-2xl mx-auto mb-20"
-          initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
-          animate={inView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
           <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/10 bg-primary/[0.03] text-xs font-semibold uppercase tracking-[0.1em] text-primary mb-6">
@@ -86,8 +86,8 @@ export default function Services() {
               className="group relative overflow-hidden bg-white/60 backdrop-blur-xl rounded-[28px] p-8 lg:p-10 border border-white/80
                          shadow-[0_8px_32px_-12px_rgba(0,0,0,0.06),inset_0_1px_1px_rgba(255,255,255,0.7)] hover:-translate-y-2
                          hover:shadow-[0_20px_40px_-16px_rgba(0,0,0,0.1),inset_0_1px_1px_rgba(255,255,255,0.8)] transition-all duration-500 flex flex-col items-start"
-              initial={{ opacity: 0, y: 40, filter: "blur(8px)" }}
-              animate={inView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
+              initial={{ opacity: 0, y: 40 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{
                 delay: i * 0.1,
                 duration: 0.8,

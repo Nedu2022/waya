@@ -50,7 +50,7 @@ const features = [
 ];
 
 export default function Features() {
-  const [ref, inView] = useInView({ threshold: 0.05, triggerOnce: false });
+  const [ref, inView] = useInView({ threshold: 0.05, triggerOnce: true });
 
   return (
     <section
@@ -63,12 +63,8 @@ export default function Features() {
       <div className="max-w-7xl mx-auto px-5 lg:px-8 relative z-10">
         <motion.div
           className="text-center max-w-2xl mx-auto mb-16"
-          initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
-          animate={
-            inView
-              ? { opacity: 1, y: 0, filter: "blur(0px)" }
-              : { opacity: 0, y: 24, filter: "blur(8px)" }
-          }
+          initial={{ opacity: 0, y: 24 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
           <span className="inline-block text-xs font-bold uppercase tracking-[0.12em] text-primary mb-4">
@@ -82,12 +78,8 @@ export default function Features() {
         <div className="grid lg:grid-cols-2 gap-16 items-start">
           <motion.div
             className="relative"
-            initial={{ opacity: 0, scale: 0.95, filter: "blur(8px)" }}
-            animate={
-              inView
-                ? { opacity: 1, scale: 1, filter: "blur(0px)" }
-                : { opacity: 0, scale: 0.95, filter: "blur(8px)" }
-            }
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={inView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.7 }}
           >
             <div className="bg-gradient-to-br from-primary/[0.06] to-accent-blue/[0.06] rounded-3xl p-6 lg:p-12 flex items-center justify-center">
@@ -178,12 +170,8 @@ export default function Features() {
               <motion.div
                 key={f.title}
                 className="flex gap-5 p-5 bg-white/50 backdrop-blur-xl rounded-2xl border border-white/80 shadow-[0_4px_24px_-12px_rgba(0,0,0,0.05)] hover:bg-white/80 transition-colors"
-                initial={{ opacity: 0, x: 24, filter: "blur(12px)" }}
-                animate={
-                  inView
-                    ? { opacity: 1, x: 0, filter: "blur(0px)" }
-                    : { opacity: 0, x: 24, filter: "blur(12px)" }
-                }
+                initial={{ opacity: 0, x: 24 }}
+                animate={inView ? { opacity: 1, x: 0 } : {}}
                 transition={{
                   delay: 0.15 + i * 0.08,
                   duration: 0.6,

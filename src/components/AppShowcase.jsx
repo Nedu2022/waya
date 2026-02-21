@@ -28,7 +28,7 @@ const appFeatures = [
 ];
 
 export default function AppShowcase() {
-  const [ref, inView] = useInView({ threshold: 0.08, triggerOnce: false });
+  const [ref, inView] = useInView({ threshold: 0.08, triggerOnce: true });
 
   return (
     <section
@@ -73,12 +73,8 @@ export default function AppShowcase() {
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
           <motion.div
             className="flex justify-center"
-            initial={{ opacity: 0, y: 36, filter: "blur(12px)" }}
-            animate={
-              inView
-                ? { opacity: 1, y: 0, filter: "blur(0px)" }
-                : { opacity: 0, y: 36, filter: "blur(12px)" }
-            }
+            initial={{ opacity: 0, y: 36 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           >
             <div className="relative">
@@ -156,12 +152,8 @@ export default function AppShowcase() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 28, filter: "blur(8px)" }}
-            animate={
-              inView
-                ? { opacity: 1, y: 0, filter: "blur(0px)" }
-                : { opacity: 0, y: 28, filter: "blur(8px)" }
-            }
+            initial={{ opacity: 0, y: 28 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
             <span className="inline-block text-xs font-bold uppercase tracking-[0.12em] text-primary mb-4">
@@ -180,12 +172,8 @@ export default function AppShowcase() {
                 <motion.div
                   key={f.title}
                   className="flex gap-4"
-                  initial={{ opacity: 0, x: 20, filter: "blur(8px)" }}
-                  animate={
-                    inView
-                      ? { opacity: 1, x: 0, filter: "blur(0px)" }
-                      : { opacity: 0, x: 20, filter: "blur(8px)" }
-                  }
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={inView ? { opacity: 1, x: 0 } : {}}
                   transition={{ delay: 0.35 + i * 0.1, duration: 0.5 }}
                 >
                   <div className="w-10 h-10 rounded-xl bg-primary/[0.08] text-primary flex items-center justify-center shrink-0">

@@ -1,5 +1,3 @@
-import { motion } from "framer-motion";
-
 export default function PremiumBackground() {
   return (
     <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
@@ -10,10 +8,9 @@ export default function PremiumBackground() {
         }}
       />
 
-      <motion.div
+      <div
         className="absolute -top-[20%] -right-[10%] w-[80%] h-[80%] opacity-[0.05] text-primary"
-        animate={{ rotate: 360, scale: [1, 1.05, 1] }}
-        transition={{ duration: 150, repeat: Infinity, ease: "linear" }}
+        style={{ transform: "rotate(15deg)" }}
       >
         <svg
           viewBox="0 0 100 100"
@@ -34,7 +31,7 @@ export default function PremiumBackground() {
             />
           ))}
         </svg>
-      </motion.div>
+      </div>
 
       <div className="absolute -top-64 -left-32 w-[800px] h-[800px] bg-primary/5 rounded-full mix-blend-multiply blur-[120px] animate-blob" />
       <div className="absolute top-[20%] right-0 w-[600px] h-[600px] bg-accent-blue/4 rounded-full mix-blend-multiply blur-[120px] animate-blob-delay-2" />

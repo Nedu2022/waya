@@ -24,19 +24,15 @@ const steps = [
 ];
 
 export default function HowItWorks() {
-  const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: false });
+  const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: true });
 
   return (
     <section className="relative py-12 md:py-20 lg:py-28" ref={ref}>
       <div className="max-w-7xl mx-auto px-5 lg:px-8">
         <motion.div
           className="text-center max-w-2xl mx-auto mb-16"
-          initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
-          animate={
-            inView
-              ? { opacity: 1, y: 0, filter: "blur(0px)" }
-              : { opacity: 0, y: 24, filter: "blur(8px)" }
-          }
+          initial={{ opacity: 0, y: 24 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
           <span className="inline-block text-xs font-bold uppercase tracking-[0.12em] text-primary mb-4">
@@ -46,7 +42,6 @@ export default function HowItWorks() {
             WayaBank provides users the platform to carryout financial
             activities
           </h2>
-          
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-10">
@@ -54,12 +49,8 @@ export default function HowItWorks() {
             <motion.div
               key={step.num}
               className="text-center"
-              initial={{ opacity: 0, y: 28, filter: "blur(8px)" }}
-              animate={
-                inView
-                  ? { opacity: 1, y: 0, filter: "blur(0px)" }
-                  : { opacity: 0, y: 28, filter: "blur(8px)" }
-              }
+              initial={{ opacity: 0, y: 28 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{
                 delay: 0.15 + i * 0.15,
                 duration: 0.6,

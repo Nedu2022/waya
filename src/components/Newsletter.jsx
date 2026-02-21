@@ -5,7 +5,7 @@ import { ArrowUpRightIcon } from "./icons/CustomIcons";
 
 export default function Newsletter() {
   const [email, setEmail] = useState("");
-  const [ref, inView] = useInView({ threshold: 0.2, triggerOnce: false });
+  const [ref, inView] = useInView({ threshold: 0.2, triggerOnce: true });
 
   return (
     <section
@@ -24,12 +24,8 @@ export default function Newsletter() {
 
       <div className="max-w-3xl mx-auto px-5 lg:px-8 text-center relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
-          animate={
-            inView
-              ? { opacity: 1, y: 0, filter: "blur(0px)" }
-              : { opacity: 0, y: 24, filter: "blur(8px)" }
-          }
+          initial={{ opacity: 0, y: 24 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-[clamp(1.75rem,4vw,3rem)] font-extrabold text-white leading-tight tracking-tight mb-6">

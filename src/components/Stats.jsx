@@ -63,7 +63,7 @@ function Counter({ value, suffix, prefix, inView }) {
 }
 
 export default function Stats() {
-  const [ref, inView] = useInView({ threshold: 0.3, triggerOnce: false });
+  const [ref, inView] = useInView({ threshold: 0.3, triggerOnce: true });
 
   return (
     <section
@@ -81,12 +81,8 @@ export default function Stats() {
             <motion.div
               key={s.label}
               className="text-center"
-              initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
-              animate={
-                inView
-                  ? { opacity: 1, y: 0, filter: "blur(0px)" }
-                  : { opacity: 0, y: 20, filter: "blur(8px)" }
-              }
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: i * 0.1, duration: 0.5 }}
             >
               <div className="text-[clamp(1.5rem,5vw,2.5rem)] font-extrabold text-primary tracking-tight mb-1">

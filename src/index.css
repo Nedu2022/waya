@@ -64,16 +64,16 @@ h1, h2, h3, h4, h5, h6 {
   50% { opacity: 0.6; transform: scale(1.05) translate(-50%, -50%); }
 }
 
-.animate-blob { animation: blob 10s infinite cubic-bezier(0.25, 0.1, 0.25, 1); }
-.animate-blob-delay-2 { animation: blob 10s infinite 2s cubic-bezier(0.25, 0.1, 0.25, 1); }
-.animate-blob-delay-4 { animation: blob 10s infinite 4s cubic-bezier(0.25, 0.1, 0.25, 1); }
-.animate-float { animation: float 4s ease-in-out infinite; }
-.animate-float-delay { animation: float 4s ease-in-out infinite 2s; }
+.animate-blob { animation: blob 10s infinite cubic-bezier(0.25, 0.1, 0.25, 1); will-change: transform; }
+.animate-blob-delay-2 { animation: blob 10s infinite 2s cubic-bezier(0.25, 0.1, 0.25, 1); will-change: transform; }
+.animate-blob-delay-4 { animation: blob 10s infinite 4s cubic-bezier(0.25, 0.1, 0.25, 1); will-change: transform; }
+.animate-float { animation: float 4s ease-in-out infinite; will-change: transform; }
+.animate-float-delay { animation: float 4s ease-in-out infinite 2s; will-change: transform; }
 .animate-shimmer {
   background-size: 200% 100%;
   animation: shimmer 3s linear infinite;
 }
-.animate-pulse-glow { animation: pulse-glow 4s ease-in-out infinite; transform-origin: top left; }
+.animate-pulse-glow { animation: pulse-glow 4s ease-in-out infinite; transform-origin: top left; will-change: transform, opacity; }
 
 
 .glass {
