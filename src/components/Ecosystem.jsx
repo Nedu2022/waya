@@ -26,7 +26,7 @@ const products = [
 ];
 
 export default function Ecosystem() {
-  const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: false });
+  const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: true });
 
   return (
     <section
@@ -37,11 +37,7 @@ export default function Ecosystem() {
         <motion.div
           className="text-center max-w-2xl mx-auto mb-16"
           initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
-          animate={
-            inView
-              ? { opacity: 1, y: 0, filter: "blur(0px)" }
-              : { opacity: 0, y: 24, filter: "blur(8px)" }
-          }
+          animate={inView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
           transition={{ duration: 0.6 }}
         >
           <span className="inline-block text-xs font-bold uppercase tracking-[0.12em] text-primary mb-4">
@@ -64,11 +60,7 @@ export default function Ecosystem() {
                          shadow-[0_0_0_1px_rgba(0,0,0,0.02),0_2px_8px_-4px_rgba(0,0,0,0.06)]
                          hover:-translate-y-2 hover:shadow-lg transition-all duration-500"
               initial={{ opacity: 0, y: 28, filter: "blur(8px)" }}
-              animate={
-                inView
-                  ? { opacity: 1, y: 0, filter: "blur(0px)" }
-                  : { opacity: 0, y: 28, filter: "blur(8px)" }
-              }
+              animate={inView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
               transition={{
                 delay: 0.1 + i * 0.12,
                 duration: 0.6,
