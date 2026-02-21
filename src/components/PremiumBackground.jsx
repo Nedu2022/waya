@@ -1,10 +1,8 @@
-import React from "react";
 import { motion } from "framer-motion";
 
 export default function PremiumBackground() {
   return (
     <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
-      {/* Noise Grain Overlay - Kills the "AI/Plastic" vibe */}
       <div
         className="absolute inset-0 opacity-[0.015] mix-blend-multiply"
         style={{
@@ -12,7 +10,6 @@ export default function PremiumBackground() {
         }}
       />
 
-      {/* Animated Glowing Orbs for Premium feel */}
       <motion.div
         className="absolute -top-[20%] -right-[10%] w-[80%] h-[80%] opacity-[0.05] text-primary"
         animate={{ rotate: 360, scale: [1, 1.05, 1] }}
@@ -39,7 +36,6 @@ export default function PremiumBackground() {
         </svg>
       </motion.div>
 
-      {/* Richer, larger blobs with better blur and blending */}
       <div className="absolute -top-64 -left-32 w-[800px] h-[800px] bg-primary/5 rounded-full mix-blend-multiply blur-[120px] animate-blob" />
       <div className="absolute top-[20%] right-0 w-[600px] h-[600px] bg-accent-blue/4 rounded-full mix-blend-multiply blur-[120px] animate-blob-delay-2" />
       <div className="absolute -bottom-40 left-[20%] w-[700px] h-[700px] bg-accent-purple/3 rounded-full mix-blend-multiply blur-[120px] animate-blob-delay-4" />

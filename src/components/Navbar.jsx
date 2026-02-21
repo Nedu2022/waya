@@ -63,7 +63,6 @@ export default function Navbar() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-5 lg:px-8 flex items-center justify-between">
-          {/* Logo */}
           <a
             href="#"
             onClick={(e) => handleScrollTo(e, "#", false)}
@@ -72,7 +71,6 @@ export default function Navbar() {
             <img src="/logo-dark.svg" alt="WayaBank" className="h-8" />
           </a>
 
-          {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => (
               <a
@@ -89,7 +87,6 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* Desktop Actions */}
           <div className="hidden md:flex items-center gap-3">
             <a
               href="https://wayabank.ng/login"
@@ -109,7 +106,6 @@ export default function Navbar() {
             </a>
           </div>
 
-          {/* Mobile Toggle */}
           <button
             onClick={() => setOpen(!open)}
             className="md:hidden relative z-[51] w-12 h-12 flex flex-col items-center justify-center 
@@ -137,7 +133,6 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Premium Mobile Menu */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -147,7 +142,6 @@ export default function Navbar() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
           >
-            {/* Background decorative blob */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3" />
 
             <div className="flex-1 flex flex-col justify-center px-8 pt-20 pb-12 overflow-y-auto z-10">

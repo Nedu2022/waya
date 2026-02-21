@@ -12,12 +12,10 @@ export default function ChatBot() {
     e.preventDefault();
     if (!input.trim()) return;
 
-    // Add user message
     const newMsg = { id: Date.now(), text: input, isBot: false };
     setMessages((prev) => [...prev, newMsg]);
     setInput("");
 
-    // Simulate bot response
     setTimeout(() => {
       setMessages((prev) => [
         ...prev,
@@ -35,7 +33,7 @@ export default function ChatBot() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="fixed bottom-24 right-5 sm:right-8 z-[100] w-[calc(100vw-40px)] sm:w-[350px]
+            className="fixed bottom-24 right-5 sm:right-8 z-100 w-[calc(100vw-40px)] sm:w-[350px]
                        bg-white/80 backdrop-blur-2xl rounded-3xl shadow-2xl border border-white/50 overflow-hidden flex flex-col"
             style={{ height: "450px" }}
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
@@ -43,8 +41,7 @@ export default function ChatBot() {
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
           >
-            {/* Header */}
-            <div className="bg-gradient-to-r from-primary to-[#FF8F3F] p-5 flex items-center justify-between shadow-sm relative z-10">
+            <div className="bg-linear-to-r from-primary to-[#FF8F3F] p-5 flex items-center justify-between shadow-sm relative z-10">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-white font-bold backdrop-blur-sm">
                   WB
@@ -80,7 +77,6 @@ export default function ChatBot() {
               </button>
             </div>
 
-            {/* Messages Area */}
             <div className="flex-1 overflow-y-auto p-5 pb-0 flex flex-col gap-4 bg-slate-50/50">
               {messages.map((msg) => (
                 <motion.div
@@ -103,7 +99,6 @@ export default function ChatBot() {
               ))}
             </div>
 
-            {/* Input Area */}
             <div className="p-4 bg-white border-t border-slate-100 relative z-10">
               <form
                 onSubmit={handleSend}
@@ -143,7 +138,6 @@ export default function ChatBot() {
         )}
       </AnimatePresence>
 
-      {/* Floating Toggle Button */}
       <motion.button
         className="fixed bottom-6 right-5 sm:right-8 z-50 w-14 h-14 rounded-full bg-primary text-white 
                    shadow-[0_8px_24px_rgba(255,107,0,0.3)] hover:shadow-[0_12px_32px_rgba(255,107,0,0.4)]

@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import {
   SendIcon,
@@ -22,19 +23,36 @@ const fadeUp = {
 };
 
 export default function Hero() {
-  const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: true });
+  const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: false });
+  const sectionRef = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+
+  const phoneY = useSpring(useTransform(scrollYProgress, [0, 1], [0, 80]), {
+    stiffness: 60,
+    damping: 30,
+  });
+  const phoneScale = useSpring(
+    useTransform(scrollYProgress, [0, 0.5], [1, 0.96]),
+    { stiffness: 60, damping: 30 },
+  );
 
   return (
     <section
       className="relative pt-28 pb-12 md:pt-36 md:pb-20 lg:pt-44 lg:pb-32 overflow-hidden bg-[#FAFAFA]"
-      ref={ref}
+      ref={(el) => {
+        ref(el);
+        sectionRef.current = el;
+      }}
     >
       <div className="absolute top-0 inset-x-0 h-64 bg-gradient-to-b from-primary/5 to-transparent pointer-events-none" />
       <PremiumBackground />
 
       <div className="max-w-7xl mx-auto px-5 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
-          {/* Text Content */}
           <motion.div
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
@@ -51,7 +69,7 @@ export default function Hero() {
 
             <motion.h1
               variants={fadeUp}
-              className="text-[clamp(2.5rem,5.5vw,4.25rem)] font-extrabold leading-[1.05]
+              className="text-[clamp(2.25rem,5.5vw,4.25rem)] font-extrabold leading-[1.05]
                          tracking-tight text-dark mb-6"
             >
               Digital Banking:{" "}
@@ -63,7 +81,7 @@ export default function Hero() {
 
             <motion.p
               variants={fadeUp}
-              className="text-[1.125rem] leading-relaxed text-slate-500 mb-10 max-w-[480px]"
+              className="text-[clamp(0.9375rem,1.5vw,1.125rem)] leading-relaxed text-slate-500 mb-10 max-w-[480px]"
             >
               Wire your money, your way. Bank of the new age, digitally built
               for you! Open an account in minutes, send money, pay bills, access
@@ -106,10 +124,10 @@ export default function Hero() {
                 { value: "99.9%", label: "Uptime" },
               ].map((s) => (
                 <div key={s.label} className="flex flex-col">
-                  <span className="text-2xl font-extrabold text-dark tracking-tight">
+                  <span className="text-[clamp(1.25rem,3vw,1.75rem)] font-extrabold text-dark tracking-tight">
                     {s.value}
                   </span>
-                  <span className="text-xs font-medium text-slate-400">
+                  <span className="text-[clamp(0.6875rem,1vw,0.8125rem)] font-medium text-slate-400">
                     {s.label}
                   </span>
                 </div>
@@ -117,24 +135,21 @@ export default function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* Phone Mockup */}
           <motion.div
             className="relative flex justify-center lg:justify-end"
+            style={{ y: phoneY, scale: phoneScale }}
             initial={{ opacity: 0, y: 50, filter: "blur(12px)" }}
             animate={inView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
             transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
           >
-            {/* Glow behind phone */}
             <div
               className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px]
                             rounded-full bg-gradient-radial from-primary/10 to-transparent animate-pulse-glow"
             />
 
             <div className="relative z-10 animate-float-delay">
-              {/* Phone */}
               <div className="phone-mockup w-[280px] h-[560px] lg:w-[300px] lg:h-[600px] rounded-[40px] overflow-hidden">
                 <div className="w-full h-full bg-gradient-to-b from-dark to-[#0F0F1A] p-6 pt-14 flex flex-col">
-                  {/* Header */}
                   <div className="flex justify-between items-center mb-8">
                     <div>
                       <p className="text-white/50 text-xs">Good morning,</p>
@@ -146,7 +161,6 @@ export default function Hero() {
                       AO
                     </div>
                   </div>
-                  {/* Balance Card */}
                   <div className="bg-gradient-to-br from-primary to-[#FF8F3F] rounded-2xl p-5 mb-5">
                     <p className="text-white/80 text-[0.6875rem] font-medium mb-1">
                       Total Balance
@@ -171,7 +185,6 @@ export default function Hero() {
                       </div>
                     </div>
                   </div>
-                  {/* Quick Actions */}
                   <div className="grid grid-cols-4 gap-3 mb-5">
                     {[
                       { icon: <SendIcon />, label: "Send" },
@@ -195,7 +208,6 @@ export default function Hero() {
                       </motion.div>
                     ))}
                   </div>
-                  {/* Transactions */}
                   <p className="text-white/50 text-[0.6875rem] font-semibold mb-2">
                     Recent Activity
                   </p>
@@ -252,7 +264,6 @@ export default function Hero() {
                 </div>
               </div>
 
-              {/* Floating cards */}
               <motion.div
                 className="absolute -left-12 bottom-28 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl px-4 py-3 flex items-center gap-3 shadow-lg hidden lg:flex"
                 initial={{ opacity: 0, x: -30, filter: "blur(8px)" }}

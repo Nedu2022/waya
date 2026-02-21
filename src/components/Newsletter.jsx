@@ -5,7 +5,7 @@ import { ArrowUpRightIcon } from "./icons/CustomIcons";
 
 export default function Newsletter() {
   const [email, setEmail] = useState("");
-  const [ref, inView] = useInView({ threshold: 0.2, triggerOnce: true });
+  const [ref, inView] = useInView({ threshold: 0.2, triggerOnce: false });
 
   return (
     <section
@@ -13,13 +13,10 @@ export default function Newsletter() {
       id="contact"
       ref={ref}
     >
-      {/* Wave pattern overlay — Remita style */}
       <div className="absolute inset-0 wave-pattern pointer-events-none" />
-      {/* Floating decorative blobs */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute -top-20 -right-20 w-[350px] h-[350px] rounded-full bg-white/[0.06] blur-3xl" />
         <div className="absolute -bottom-20 -left-20 w-[300px] h-[300px] rounded-full bg-white/[0.04] blur-3xl" />
-        {/* Floating dots — Remita style */}
         <div className="absolute top-16 left-16 w-3 h-3 rounded-full bg-white/20 animate-float" />
         <div className="absolute top-32 right-24 w-2 h-2 rounded-full bg-white/15 animate-float-delay" />
         <div className="absolute bottom-20 left-1/3 w-2.5 h-2.5 rounded-full bg-white/10 animate-float" />
@@ -28,7 +25,11 @@ export default function Newsletter() {
       <div className="max-w-3xl mx-auto px-5 lg:px-8 text-center relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
-          animate={inView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
+          animate={
+            inView
+              ? { opacity: 1, y: 0, filter: "blur(0px)" }
+              : { opacity: 0, y: 24, filter: "blur(8px)" }
+          }
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-[clamp(1.75rem,4vw,3rem)] font-extrabold text-white leading-tight tracking-tight mb-6">

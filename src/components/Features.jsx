@@ -4,12 +4,9 @@ import {
   PersonalBankIcon,
   TSAIcon,
   AirtimeIcon,
-  LoanIcon,
-  SavingsIcon,
-  ElectricityIcon,
   ShieldCheckIcon,
   ArrowLeftRightIcon,
-  FingerprintIcon,
+  ElectricityIcon,
 } from "./icons/CustomIcons";
 import PremiumBackground from "./PremiumBackground";
 
@@ -53,7 +50,7 @@ const features = [
 ];
 
 export default function Features() {
-  const [ref, inView] = useInView({ threshold: 0.05, triggerOnce: true });
+  const [ref, inView] = useInView({ threshold: 0.05, triggerOnce: false });
 
   return (
     <section
@@ -67,24 +64,29 @@ export default function Features() {
         <motion.div
           className="text-center max-w-2xl mx-auto mb-16"
           initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
-          animate={inView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
+          animate={
+            inView
+              ? { opacity: 1, y: 0, filter: "blur(0px)" }
+              : { opacity: 0, y: 24, filter: "blur(8px)" }
+          }
           transition={{ duration: 0.6 }}
         >
           <span className="inline-block text-xs font-bold uppercase tracking-[0.12em] text-primary mb-4">
             Why Wayabank
           </span>
-          <h2 className="text-[clamp(1.875rem,4vw,2.75rem)] font-extrabold leading-tight tracking-tight text-dark mb-5">
+          <h2 className="text-[clamp(1.75rem,4vw,2.75rem)] font-extrabold leading-tight tracking-tight text-dark mb-5">
             Download Wayabank and start enjoying our great features.
           </h2>
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-16 items-start">
-          {/* Visual */}
           <motion.div
             className="relative"
             initial={{ opacity: 0, scale: 0.95, filter: "blur(8px)" }}
             animate={
-              inView ? { opacity: 1, scale: 1, filter: "blur(0px)" } : {}
+              inView
+                ? { opacity: 1, scale: 1, filter: "blur(0px)" }
+                : { opacity: 0, scale: 0.95, filter: "blur(8px)" }
             }
             transition={{ duration: 0.7 }}
           >
@@ -112,18 +114,14 @@ export default function Features() {
                         </p>
                       </div>
                     </div>
-                    {/* Chart bars */}
                     <div className="flex items-end justify-center gap-1.5 h-28 px-4">
                       {[45, 65, 40, 80, 55, 90, 70, 60, 85, 50, 75, 95].map(
                         (h, i) => {
                           let color = "rgba(255,255,255,0.06)";
-                          if (i === 11)
-                            color = "#FF6B00"; // Orange (Current month)
-                          else if (i % 3 === 0)
-                            color = "#22C55E"; // Green
-                          else if (i % 3 === 1)
-                            color = "#F87171"; // Red
-                          else color = "#A855F7"; // Purple
+                          if (i === 11) color = "#FF6B00";
+                          else if (i % 3 === 0) color = "#22C55E";
+                          else if (i % 3 === 1) color = "#F87171";
+                          else color = "#A855F7";
 
                           return (
                             <motion.div
@@ -160,8 +158,11 @@ export default function Features() {
                         "O",
                         "N",
                         "D",
-                      ].map((m) => (
-                        <span key={m} className="text-white/20 text-[0.5rem]">
+                      ].map((m, i) => (
+                        <span
+                          key={`${m}-${i}`}
+                          className="text-white/20 text-[0.5rem]"
+                        >
                           {m}
                         </span>
                       ))}
@@ -172,7 +173,6 @@ export default function Features() {
             </div>
           </motion.div>
 
-          {/* Features list */}
           <div className="flex flex-col gap-6">
             {features.map((f, i) => (
               <motion.div
@@ -180,7 +180,9 @@ export default function Features() {
                 className="flex gap-5 p-5 bg-white/50 backdrop-blur-xl rounded-2xl border border-white/80 shadow-[0_4px_24px_-12px_rgba(0,0,0,0.05)] hover:bg-white/80 transition-colors"
                 initial={{ opacity: 0, x: 24, filter: "blur(12px)" }}
                 animate={
-                  inView ? { opacity: 1, x: 0, filter: "blur(0px)" } : {}
+                  inView
+                    ? { opacity: 1, x: 0, filter: "blur(0px)" }
+                    : { opacity: 0, x: 24, filter: "blur(12px)" }
                 }
                 transition={{
                   delay: 0.15 + i * 0.08,
@@ -194,10 +196,10 @@ export default function Features() {
                   {f.icon}
                 </div>
                 <div>
-                  <h3 className="text-[1.0625rem] font-bold text-dark mb-1.5">
+                  <h3 className="text-[clamp(0.9375rem,1.6vw,1.0625rem)] font-bold text-dark mb-1.5">
                     {f.title}
                   </h3>
-                  <p className="text-sm leading-relaxed text-slate-500">
+                  <p className="text-[clamp(0.8125rem,1.2vw,0.875rem)] leading-relaxed text-slate-500">
                     {f.desc}
                   </p>
                 </div>

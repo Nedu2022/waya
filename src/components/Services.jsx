@@ -3,10 +3,9 @@ import { useInView } from "react-intersection-observer";
 import {
   PersonalBankIcon,
   TSAIcon,
-  AirtimeIcon,
+  ElectricityIcon,
   LoanIcon,
   SavingsIcon,
-  ElectricityIcon,
   WayaArrowIcon,
 } from "./icons/CustomIcons";
 
@@ -49,7 +48,7 @@ const services = [
 ];
 
 export default function Services() {
-  const [ref, inView] = useInView({ threshold: 0.05, triggerOnce: true });
+  const [ref, inView] = useInView({ threshold: 0.05, triggerOnce: false });
 
   return (
     <section
@@ -57,28 +56,30 @@ export default function Services() {
       id="services"
       ref={ref}
     >
-      {/* Absolute positioning element for premium backdrop feel */}
-      <div className="absolute top-1/2 left-0 w-[1px] h-1/2 bg-gradient-to-b from-transparent via-primary/10 to-transparent" />
+      <div className="absolute top-1/2 left-0 w-[1px] h-1/2 bg-linear-to-b from-transparent via-primary/10 to-transparent" />
 
       <div className="max-w-7xl mx-auto px-5 lg:px-8 relative z-10">
         <motion.div
           className="text-center max-w-2xl mx-auto mb-20"
           initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
-          animate={inView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
+          animate={
+            inView
+              ? { opacity: 1, y: 0, filter: "blur(0px)" }
+              : { opacity: 0, y: 30, filter: "blur(8px)" }
+          }
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
           <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/10 bg-primary/[0.03] text-xs font-semibold uppercase tracking-[0.1em] text-primary mb-6">
             <span className="w-1.5 h-1.5 rounded-full bg-primary" /> Our
             Services
           </span>
-          <h2 className="text-[clamp(2rem,4.5vw,3rem)] font-extrabold leading-[1.1] tracking-tight text-dark mb-6">
+          <h2 className="text-[clamp(1.75rem,4vw,2.75rem)] font-extrabold leading-[1.1] tracking-tight text-dark mb-6">
             WayaBank Services
           </h2>
-          <p className="text-[1.0625rem] lg:text-[1.125rem] leading-relaxed text-slate-500">
+          <p className="text-[clamp(0.9375rem,1.5vw,1.125rem)] leading-relaxed text-slate-500">
             Are you a Business or an individual? Wayabank provides services that
             help individuals and businesses carryout financial activities easily
-            without any delay and hinderance. Our users can make seamless cash
-            transfers, withdrawal, pay bills, request and receive money.
+            without any delay and hinderance.
           </p>
         </motion.div>
 
@@ -90,29 +91,31 @@ export default function Services() {
                          shadow-[0_8px_32px_-12px_rgba(0,0,0,0.06),inset_0_1px_1px_rgba(255,255,255,0.7)] hover:-translate-y-2
                          hover:shadow-[0_20px_40px_-16px_rgba(0,0,0,0.1),inset_0_1px_1px_rgba(255,255,255,0.8)] transition-all duration-500 flex flex-col items-start"
               initial={{ opacity: 0, y: 40, filter: "blur(8px)" }}
-              animate={inView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
+              animate={
+                inView
+                  ? { opacity: 1, y: 0, filter: "blur(0px)" }
+                  : { opacity: 0, y: 40, filter: "blur(8px)" }
+              }
               transition={{
                 delay: i * 0.1,
                 duration: 0.8,
                 ease: [0.16, 1, 0.3, 1],
               }}
             >
-              {/* Subtle top glare effect */}
-              <div className="absolute top-0 inset-x-0 h-[100px] bg-gradient-to-b from-white to-transparent opacity-60 pointer-events-none" />
+              <div className="absolute top-0 inset-x-0 h-[100px] bg-linear-to-b from-white to-transparent opacity-60 pointer-events-none" />
 
               <div
                 className={`relative w-14 h-14 rounded-2xl flex items-center justify-center mb-8 transition-all duration-500 group-hover:scale-110 group-hover:-rotate-3 group-hover:bg-opacity-10 shadow-sm ${s.color}`}
               >
                 {s.icon}
               </div>
-              <h3 className="relative text-[1.125rem] font-extrabold text-dark mb-3 tracking-tight group-hover:text-primary transition-colors">
+              <h3 className="relative text-[clamp(1rem,1.8vw,1.125rem)] font-extrabold text-dark mb-3 tracking-tight group-hover:text-primary transition-colors">
                 {s.title}
               </h3>
-              <p className="relative text-[0.9375rem] leading-relaxed text-slate-500 mb-10 flex-1">
+              <p className="relative text-[clamp(0.8125rem,1.3vw,0.9375rem)] leading-relaxed text-slate-500 mb-10 flex-1">
                 {s.desc}
               </p>
 
-              {/* Premium minimal link using specific Arrow right */}
               <a
                 href="#"
                 className="relative mt-auto inline-flex items-center gap-3 text-[0.875rem] font-bold text-primary hover:text-primary-hover transition-colors"

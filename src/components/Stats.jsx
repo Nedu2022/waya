@@ -38,6 +38,7 @@ function Counter({ value, suffix, prefix, inView }) {
 
   useEffect(() => {
     if (inView) {
+      count.set(0);
       const controls = animate(count, value, {
         duration: 2.5,
         ease: [0.16, 1, 0.3, 1],
@@ -62,14 +63,13 @@ function Counter({ value, suffix, prefix, inView }) {
 }
 
 export default function Stats() {
-  const [ref, inView] = useInView({ threshold: 0.3, triggerOnce: true });
+  const [ref, inView] = useInView({ threshold: 0.3, triggerOnce: false });
 
   return (
     <section
       className="relative bg-navy py-12 lg:py-20 overflow-hidden"
       ref={ref}
     >
-      {/* Subtle blobs */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute -top-20 -left-20 w-[300px] h-[300px] bg-primary/[0.06] rounded-full blur-3xl" />
         <div className="absolute -bottom-20 right-10 w-[250px] h-[250px] bg-accent-blue/[0.05] rounded-full blur-3xl" />
@@ -82,7 +82,11 @@ export default function Stats() {
               key={s.label}
               className="text-center"
               initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
-              animate={inView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
+              animate={
+                inView
+                  ? { opacity: 1, y: 0, filter: "blur(0px)" }
+                  : { opacity: 0, y: 20, filter: "blur(8px)" }
+              }
               transition={{ delay: i * 0.1, duration: 0.5 }}
             >
               <div className="text-[clamp(1.5rem,5vw,2.5rem)] font-extrabold text-primary tracking-tight mb-1">
@@ -93,7 +97,9 @@ export default function Stats() {
                   inView={inView}
                 />
               </div>
-              <div className="text-sm text-white/50 font-medium">{s.label}</div>
+              <div className="text-[clamp(0.75rem,1.2vw,0.875rem)] text-white/50 font-medium">
+                {s.label}
+              </div>
             </motion.div>
           ))}
         </div>

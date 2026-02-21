@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import {
   FingerprintIcon,
-  BellIcon,
   BarChart3Icon,
   SendIcon,
   ReceiptIcon,
@@ -18,19 +17,18 @@ const appFeatures = [
   },
   {
     icon: <SendIcon width={20} height={20} />,
-    title:
-      "Easy life! Send or receive money with email address or phone number",
-    desc: "We designed a banking app to make your busy lifestyle easy. We have made it ease for you to transfer or receive money with your phone number. That’s all you need to make the right moves with your money, no sweat.",
+    title: "Send or receive money with ease",
+    desc: "We designed a banking app to make your busy lifestyle easy. Transfer or receive money with just an email address or phone number.",
   },
   {
     icon: <BarChart3Icon width={20} height={20} />,
-    title: "It’s your money, we just help you manage it.",
-    desc: "Save it, spend it, send it. It’s up to you. Whatever you choose to do with your money, we’ll make sure it’s done better and safer.",
+    title: "We just help you manage it",
+    desc: "Save it, spend it, send it. It\u2019s up to you. Whatever you choose to do with your money, we\u2019ll make sure it\u2019s done better and safer.",
   },
 ];
 
 export default function AppShowcase() {
-  const [ref, inView] = useInView({ threshold: 0.08, triggerOnce: true });
+  const [ref, inView] = useInView({ threshold: 0.08, triggerOnce: false });
 
   return (
     <section
@@ -38,11 +36,9 @@ export default function AppShowcase() {
       id="app"
       ref={ref}
     >
-      {/* Background decorations */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute -top-20 right-0 w-[400px] h-[400px] bg-accent-purple/[0.04] rounded-full blur-3xl animate-blob" />
         <div className="absolute bottom-10 left-10 w-[300px] h-[300px] bg-primary/[0.04] rounded-full blur-3xl animate-blob-delay-4" />
-        {/* Dashed circle decoration — Remita style */}
         <svg
           className="absolute top-20 left-10 w-40 h-40 opacity-[0.06]"
           viewBox="0 0 160 160"
@@ -75,15 +71,17 @@ export default function AppShowcase() {
 
       <div className="max-w-7xl mx-auto px-5 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
-          {/* Phone */}
           <motion.div
             className="flex justify-center"
             initial={{ opacity: 0, y: 36, filter: "blur(12px)" }}
-            animate={inView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
+            animate={
+              inView
+                ? { opacity: 1, y: 0, filter: "blur(0px)" }
+                : { opacity: 0, y: 36, filter: "blur(12px)" }
+            }
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           >
             <div className="relative">
-              {/* Glow */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-accent-purple/[0.08] rounded-full blur-3xl animate-pulse-glow" />
               <div className="phone-mockup w-[260px] h-[520px] rounded-[36px] overflow-hidden relative z-10">
                 <div className="w-full h-full bg-gradient-to-b from-dark to-[#0F0F1A] p-5 pt-12 flex flex-col">
@@ -157,21 +155,24 @@ export default function AppShowcase() {
             </div>
           </motion.div>
 
-          {/* Content */}
           <motion.div
             initial={{ opacity: 0, y: 28, filter: "blur(8px)" }}
-            animate={inView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
+            animate={
+              inView
+                ? { opacity: 1, y: 0, filter: "blur(0px)" }
+                : { opacity: 0, y: 28, filter: "blur(8px)" }
+            }
             transition={{ delay: 0.2, duration: 0.6 }}
           >
             <span className="inline-block text-xs font-bold uppercase tracking-[0.12em] text-primary mb-4">
               The Easy-to-use Banking Platform
             </span>
-            <h2 className="text-[clamp(1.875rem,4vw,2.75rem)] font-extrabold leading-tight tracking-tight text-dark mb-5">
+            <h2 className="text-[clamp(1.75rem,4vw,2.75rem)] font-extrabold leading-tight tracking-tight text-dark mb-5">
               We re-engineered this app to proudly enable you do alot, and
               perform financial transactions with ease.
             </h2>
-            <p className="text-base lg:text-[1.0625rem] leading-relaxed text-slate-500 mb-8">
-              All you need is the reciever’s email address or phone number.
+            <p className="text-[clamp(0.9375rem,1.5vw,1.0625rem)] leading-relaxed text-slate-500 mb-8">
+              All you need is the reciever's email address or phone number.
             </p>
 
             <div className="flex flex-col gap-6 mb-10">
@@ -181,7 +182,9 @@ export default function AppShowcase() {
                   className="flex gap-4"
                   initial={{ opacity: 0, x: 20, filter: "blur(8px)" }}
                   animate={
-                    inView ? { opacity: 1, x: 0, filter: "blur(0px)" } : {}
+                    inView
+                      ? { opacity: 1, x: 0, filter: "blur(0px)" }
+                      : { opacity: 0, x: 20, filter: "blur(8px)" }
                   }
                   transition={{ delay: 0.35 + i * 0.1, duration: 0.5 }}
                 >
@@ -189,8 +192,10 @@ export default function AppShowcase() {
                     {f.icon}
                   </div>
                   <div>
-                    <p className="font-bold text-dark mb-0.5">{f.title}</p>
-                    <p className="text-sm text-slate-500 leading-relaxed">
+                    <p className="font-bold text-dark mb-0.5 text-[clamp(0.875rem,1.5vw,1rem)]">
+                      {f.title}
+                    </p>
+                    <p className="text-[clamp(0.8125rem,1.2vw,0.875rem)] text-slate-500 leading-relaxed">
                       {f.desc}
                     </p>
                   </div>

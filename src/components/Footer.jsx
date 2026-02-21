@@ -21,7 +21,6 @@ export default function Footer() {
     <footer className="bg-navy text-white pt-20 pb-0">
       <div className="max-w-7xl mx-auto px-5 lg:px-8">
         <div className="grid sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr] gap-10 lg:gap-12 pb-16 border-b border-white/[0.06]">
-          {/* Brand */}
           <div>
             <a href="#" className="inline-block mb-4">
               <img src="/logo.svg" alt="WayaBank" className="h-8" />
@@ -89,7 +88,6 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Columns */}
           {[
             { title: "Company", links: company },
             { title: "Services", links: services },
@@ -114,7 +112,6 @@ export default function Footer() {
           ))}
         </div>
 
-        {/* Bottom bar */}
         <div className="flex flex-col sm:flex-row justify-between items-center gap-4 py-6">
           <p className="text-xs text-white/30">
             © 2026 WayaBank. All rights reserved. Licensed by the Central Bank
